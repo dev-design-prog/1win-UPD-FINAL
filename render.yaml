@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: 1win-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot/main_neon.py
+    healthCheckPath: /health
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: BOT_TOKEN
+        sync: false
+      - key: NEON_CONNECTION_STRING
+        sync: false
+      # Обязательная подписка: @username канала или id (-100...). Бот должен быть АДМИНИСТРАТОРОМ канала.
+      - key: REQUIRED_CHANNEL
+        sync: false
+      - key: CHANNEL_SUB_URL
+        sync: false
+      - key: WEBAPP_URL
+        sync: false
+      - key: CHANNEL_LABEL
+        value: "@casino"
